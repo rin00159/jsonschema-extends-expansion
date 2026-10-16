@@ -1,0 +1,50 @@
+{
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"$id": "https://example.com/meta/custom.json",
+	"description": "`何かの規格やschemaを拡張して作るJSONSchema`で利用する語彙を定義する目的。`draft/2020-12`を拡張して作成した。このschemaで「拡張プロパティ」として追加されたnode以外に`x-extension`をつけてはならない。",
+	"$comment": "「$dynamicAnchor」を利用できない場合(ほとんどのバリデーションエンジンが該当)のchema定義。",
+	"allOf": [
+		{ "$ref": "#/$defs/loop" },
+		{ "$ref": "../common.schema.json#/$defs/rootConfig" }
+	],
+	"$defs": {
+		"loop": {
+			"allOf": [
+				{ "$ref": "https://json-schema.org/draft/2020-12/schema" },
+				{ "$ref": "../common.schema.json#/$defs/subschemaExtension" },
+				{
+					"properties": {
+						"$defs": { "additionalProperties": { "$ref": "#/$defs/loop" } },
+						"definitions": {
+							"additionalProperties": { "$ref": "#/$defs/loop" }
+						},
+						"properties": {
+							"additionalProperties": { "$ref": "#/$defs/loop" }
+						},
+						"patternProperties": {
+							"additionalProperties": { "$ref": "#/$defs/loop" }
+						},
+						"dependentSchemas": {
+							"additionalProperties": { "$ref": "#/$defs/loop" }
+						},
+						"prefixItems": { "items": { "$ref": "#/$defs/loop" } },
+						"allOf": { "items": { "$ref": "#/$defs/loop" } },
+						"anyOf": { "items": { "$ref": "#/$defs/loop" } },
+						"oneOf": { "items": { "$ref": "#/$defs/loop" } },
+						"items": { "$ref": "#/$defs/loop" },
+						"additionalProperties": { "$ref": "#/$defs/loop" },
+						"unevaluatedItems": { "$ref": "#/$defs/loop" },
+						"unevaluatedProperties": { "$ref": "#/$defs/loop" },
+						"contains": { "$ref": "#/$defs/loop" },
+						"propertyNames": { "$ref": "#/$defs/loop" },
+						"contentSchema": { "$ref": "#/$defs/loop" },
+						"not": { "$ref": "#/$defs/loop" },
+						"if": { "$ref": "#/$defs/loop" },
+						"then": { "$ref": "#/$defs/loop" },
+						"else": { "$ref": "#/$defs/loop" }
+					}
+				}
+			]
+		}
+	}
+}

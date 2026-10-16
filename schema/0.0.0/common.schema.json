@@ -1,0 +1,24 @@
+{
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"$id": "https://example.com/meta/custom.json",
+	"$defs": {
+		"rootConfig": {
+			"properties": {
+				"x-strict-extends": {
+					"type": "boolean",
+					"default": false,
+					"description": "trueならば:`x-extension`を「拡張プロパティ」全てにつけなければならない。"
+				}
+			}
+		},
+		"subschemaExtension": {
+			"properties": {
+				"x-extension": {
+					"type": "boolean",
+					"default": false,
+					"description": "拡張プロパティか？(このschemaで「拡張プロパティ」として追加されたもの以外にプロパティでtrueをつけられない)。{`x-extension`:true}の内側のschema(`$ref`を介した参照は除く)にも同様の効果を持つ"
+				}
+			}
+		}
+	}
+}
