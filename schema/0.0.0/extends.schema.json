@@ -1,6 +1,6 @@
 {
 	"$schema": "https://json-schema.org/draft/2020-12/schema",
-	"$id": "https://example.com/meta/custom.json",
+	"$id": "https://raw.githubusercontent.com/rin00159/jsonschema-extends-expansion/refs/heads/main/schema/0.0.0/extends.schema.json",
 	"description": "`何かの規格やschemaを拡張して作るJSONSchema`で利用する語彙を定義する目的。`draft/2020-12`を拡張して作成した。このschemaで「拡張プロパティ」として追加されたnode以外に`x-extension`をつけてはならない。",
 	"$comment": "「draft/2020-12」の仕様上、正しい定義だがvscodeのバリデーターが「$dynamicAnchor」に対応していない。もしあなたがそれに該当するなら「./ide/extends.schema.json」を利用すると良い",
 	"allOf": [
